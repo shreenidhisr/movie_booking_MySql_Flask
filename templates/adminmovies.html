@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {%block title %}Home{%endblock%} {%block css%}
+<style>
+  .card {
+    float: left;
+    margin-top: 10px;
+  }
+  .card::after {
+    clear: both;
+  }
+</style>
+{%endblock%} {%block body%}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Movie Booking System</a>
+  <a href="/adminDashboard/" class="btn btn-danger">HOME</a>
+  <a href="/logout" class="btn btn-danger">Logout</a>
+
+  <form class="form-inline" action="/searchMovie" method="POST">
+    <input
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      name="search_data"
+    />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Search
+    </button>
+  </form>
+</nav>
+
+{%for row in rows%}
+<div class="card" style="width: 20rem; margin-right: 20px">
+  <img
+    src="/static/images/{{row[5]}}"
+    class="card-img-top"
+    alt="{{row[5]}}"
+    width="20px"
+    height="300px"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{row[1]}}</h5>
+    <p class="card-text">{{row[4]}}</p>
+    <!-- <a href="showBookTickets" class="btn btn-primary">Book</a> -->
+  </div>
+</div>
+{%endfor%} {%endblock%}

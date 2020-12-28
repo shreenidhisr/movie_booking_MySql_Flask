@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {%block title %}tickets{%endblock%} {%block css%}
+{%endblock%} {%block body%}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Movie Booking System</a>
+  <a href="/showmovies/" class="btn btn-danger">HOME</a>
+  <a href="/logout" class="btn btn-danger">Logout</a>
+  <a href="/viewProfile" class="btn btn-danger">Profile</a>
+  <form class="form-inline" action="/searchMovie" method="POST">
+    <input
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      name="search_data"
+    />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Search
+    </button>
+  </form>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="card" style="width: 18rem">
+        {%for row in rows%}
+        <div class="card border-success mb-3" style="max-width: 18rem">
+          <div class="card-header bg-transparent border-success">
+            Your Ticket
+          </div>
+          <div class="card-body text-success">
+            <h5 class="card-title">movie:{{row[1]}}</h5>
+            <h5 class="card-title">no of tickets:{{row[0]}}</h5>
+            <h5 class="card-title">show no:{{row[2]}}</h5>
+            <h5 class="card-title">date:{{row[3]}}</h5>
+            <h5 class="card-title">NAME:{{row[5]}}</h5>
+            <h5 class="card-title">venue:{{row[4]}}</h5>
+          </div>
+          <div class="card-footer bg-transparent border-success">
+            Enjoy Buddy
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
